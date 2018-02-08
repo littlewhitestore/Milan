@@ -1,0 +1,163 @@
+<!--pages/index/detail.wxml-->
+<!--内容开始-->
+<view class="cont">
+
+  <view class="swiper-container">
+    <swiper autoplay="auto" circular="true" interval="5000" duration="500" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
+      <block wx:for="{{slider}}" wx:key="unique">
+        <swiper-item>
+          <image src="{{item}}" class="img"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="dots">
+      <block wx:for="{{slider}}" wx:key="unique">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+
+  <view class="title">{{goods_info.goods_name}}</view>
+  <view class="fb_r ">
+    <view class="price">￥{{goods_info.goods_price}}</view>
+    <view class="oldprice">
+      <text style="text-decoration:line-through">￥{{goods_info.market_price}}</text>
+    </view>
+    <!-- <view class="postage">免邮费</view> -->
+  </view>
+
+
+
+  <view class="gmxx">
+    <view class="fb_row" wx:for="{{services}}" wx:for-index='index'>
+      <view>
+        <image class="circle" src="/images/icons/rond.png"></image>
+      </view>
+
+      <!-- <form bindsubmit="formSubmit" bindreset="formReset" report-submit='true' >
+        <button class="o_h_btn font_12" formType="submit" type='testType+{{index}}'> -->
+            <view style='color: #979fa7;'>{{item.desc}}</view>
+        <!-- </button> -->
+      <!-- </form> -->
+
+    </view>
+
+    <view class="fb_row">
+      <view>
+        <image class="circle" src="/images/icons/rond.png"></image>
+      </view>
+      <view style='color: #979fa7;'>{{goods_info.postage_desc}}</view>
+    </view>
+  </view>
+
+  <view class="font">商品详情</view>
+  <!-- <view class="line">
+    <view class="liner"></view>
+  </view> -->
+  <view class="info">
+
+    <view wx:for="{{detailImageList}}">
+      <view>
+        <image src="{{item}}" mode="widthFix" style="width:375px" />
+      </view>
+    </view>
+
+  </view>
+
+</view>
+<view class="footfixed tc">
+
+  <view class="b_t fl_l w45 font_12 hui03 df">
+    <view class="df_1 l_h15 pt5 bre">
+
+
+      <view bindtap="backshop">
+        <image class="icon_kf" src="/images/icons/shop-detail.png"></image>
+        <view bindtap="backshop" class="dbtext">首页</view>
+      </view>
+
+    </view>
+    <view class="df_1 l_h15 pt5 bre ke">
+
+      <contact-button size="27" session-from="productId_{{detailData.id}}" class="bt">
+      </contact-button>
+
+      <image class="icon_kf" src="/images/icons/support-detail.png"></image>
+      <view class="dbtext">客服</view>
+
+    </view>
+    <button class=" btshare df_1 l_h15 pt5" open-type="share">
+
+      <image class="icon_kf" src="/images/icons/share-detail.png"></image>
+      <view class="dbtext" style='margin-top:6rpx'>分享</view>
+    </button>
+  </view>
+  <view class="fl_l w55 b1">
+    <!-- <view class="w50 fl_l bg_cheng white" bindtap="addShopCart" data-type="addcart">加入购物车</view> -->
+
+    <view class="bg_btn white w100 fl_l" bindtap="{{ goods_info.sku_list.length == 1 ? 'gobuy' :'setModalStatus'}}" data-status="1">立即抢购</view>
+  </view>
+</view>
+
+
+<view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+  <view class="close_icon" bindtap="setModalStatus" data-status="0">x</view>
+  <view class="drawer_attr_content">
+    <view class="text_center">
+
+      <image class="drawer_image" src="{{currentSku ? currentSku.img :slider[0]}}"></image>
+
+      <view class="mingcheng">
+        <view style="font-size:20px;color:red">{{curSkuPrice}}</view>
+        <view style="font-size:16px;color:rgba(0, 0, 0, 0.87);">{{curSkuAttr}}</view>
+      </view>
+    </view>
+    <view class='eline1'></view>
+
+    <view class="dec">
+      <view class="deci">{{arr1[0].key}}</view>
+      <view class="decd"  >
+
+        <view wx:for="{{arr1}}" data-id="{{item.id}}" catchtap='click1'  class="deca {{item.btn_class}}">{{item.value}}</view>
+
+              
+      </view>
+
+    </view>
+   
+    <view class='eline2'></view>
+
+    <view class="dec">
+      <view class="deci">{{arr2[0].key}}</view>
+      <view class="decd">
+        <view   wx:for="{{arr2}}"  data-id="{{item.id}}" class=" decb {{item.btn_class}}"  catchtap='click2' >{{item.value}}</view>
+
+
+      </view>
+
+    </view>
+
+
+
+    <view class='eline3'></view>
+
+    <view class="shu">
+      <text class="cun">购买数量</text>
+      <view class="dian">
+        <view class="stepper">
+
+          <text class="{{minusStatuses[index]}}" data-alpha-beta="0" bindtap="changeNum">-</text>
+          <view class="nownum">{{buynum}}</view>
+
+          <text class="normal" data-alpha-beta="1" bindtap="changeNum">+</text>
+        </view>
+      </view>
+    </view>
+           
+    <view class="footc" bindtap="gobuy" data-type="buynow" data-status="1">
+      立即购买
+    </view>
+  </view>
+</view>
