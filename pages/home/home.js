@@ -102,48 +102,48 @@ Page({
     })
   },
   //点击加载更多
-  getMore: function (e) {
-    var that = this;
-    var page = that.data.page;
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/Index/getlist',
-      method: 'post',
-      data: { page: page },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res)
-        if (res.data.status_code == 1) {
-          var prolist = res.data.prolist;
-          if (prolist == '') {
-            wx.showToast({
-              title: '没有更多数据！',
-              duration: 2000
-            });
-            return false;
-          }
-          //that.initProductData(data);
-          that.setData({
-            page: page + 1,
-            productData: that.data.productData.concat(prolist)
-          });
-          //endInitData
-        } else if (res.data.status_code == 0) {
-          wx.showToast({
-            title: res.data.message,
-          })
-        }
+  // getMore: function (e) {
+  //   var that = this;
+  //   var page = that.data.page;
+  //   wx.request({
+  //     url: app.d.ceshiUrl + '/Api/Index/getlist',
+  //     method: 'post',
+  //     data: { page: page },
+  //     header: {
+  //       'Content-Type': 'application/x-www-form-urlencoded'
+  //     },
+  //     success: function (res) {
+  //       console.log(res)
+  //       if (res.data.status_code == 1) {
+  //         var prolist = res.data.prolist;
+  //         if (prolist == '') {
+  //           wx.showToast({
+  //             title: '没有更多数据！',
+  //             duration: 2000
+  //           });
+  //           return false;
+  //         }
+  //         //that.initProductData(data);
+  //         that.setData({
+  //           page: page + 1,
+  //           productData: that.data.productData.concat(prolist)
+  //         });
+  //         //endInitData
+  //       } else if (res.data.status_code == 0) {
+  //         wx.showToast({
+  //           title: res.data.message,
+  //         })
+  //       }
 
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      }
-    })
-  },
+  //     },
+  //     fail: function (e) {
+  //       wx.showToast({
+  //         title: '网络异常！',
+  //         duration: 2000
+  //       });
+  //     }
+  //   })
+  // },
 
   changeIndicatorDots: function (e) {
     this.setData({
@@ -189,11 +189,12 @@ Page({
   loadList: function (offset) {
     var that = this;
     wx.request({
-      url: app.config.host + '/home?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count,
+      url: app.config.host + '/home?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count + '&entry' + app.globalData.entry ,
       method: 'get',
       data: {},
       header: {
-        'ContentType': 'application/xwwwformurlencoded'
+   
+        'Content-Type': 'application/json'
       },
       success: function (res) {
         console.log(res.data.status_code);

@@ -621,24 +621,22 @@ icon {
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-size:14px;
-  color: rgba(67, 72, 76, 1);
+  color: #000;
 }
 .pro_price{
    max-width: 352rpx;
   display: flex;
-  flex-direction: row;
+  flex-direction:row;
   justify-content: space-between;
   align-items: baseline;
 }
 .pro_price .oldprice{
-  color:#979fa7;
+  color:#757f8a;
   font-size:14px;
   text-decoration:line-through;
 }
 .pro_price .nowprice{
- 
-  font-size:14px;
-
-  
+ font-size:17px;
+  color: #f33975;
 }
 
