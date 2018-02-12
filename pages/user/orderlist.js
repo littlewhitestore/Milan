@@ -1,4 +1,4 @@
-// pages/user/dingdan.js
+// pages/user/orderlist.js
 //index.js  
 //获取应用实例  
 var app = getApp();
@@ -32,7 +32,7 @@ Page({
     var orderid = event.currentTarget.dataset.orderid
     console.log(event)
     wx.navigateTo({
-      url: 'dd?orderid=' + orderid
+      url: 'orderdetails?orderid=' + orderid
     })
 
   },
@@ -50,7 +50,7 @@ Page({
     var that = this;
     console.log("请求订单url==" + app.config.host + '/orders?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count)
     wx.request({
-      url: app.config.host + '/orders?token=' + util.gettoken()+ "&offset=" + offset + "&count=" + that.data.count,
+      url: app.config.host + '/orders?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count + '&entry' + app.globalData.entry,
       method: 'get',
       data: {},
       header: {
@@ -67,9 +67,7 @@ Page({
           show: 0
         })
       }
-        if (fail_count==0){
-          res.data.status_code = 2;
-        }        
+           
         if (res.data.status_code && res.data.status_code == 1) {
           if (offset == 0){
             that.setData({

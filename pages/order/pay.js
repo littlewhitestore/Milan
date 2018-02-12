@@ -59,7 +59,7 @@ Page({
       mask: true
     })
     wx.request({
-      url: app.config.host + '/settlement',
+      url: app.config.host + '/settlement' + '&entry' + app.globalData.entry,
       method: 'post',
       data: {
         goods_id: that.data.goods_id,
@@ -120,7 +120,7 @@ Page({
       mask: true
     })
     wx.request({
-      url: app.config.host + '/order/buynow' ,
+      url: app.config.host + '/order/buynow' + '&entry' + app.globalData.entry,
       method: 'post',
       data: {
         goods_id: that.data.goods_id,

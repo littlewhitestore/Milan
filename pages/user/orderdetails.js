@@ -1,4 +1,4 @@
-// user/dd.js
+// user/orderdetails.js
 var app = getApp();
 var common = require("../../utils/common.js");
 var util = require("../../utils/util.js");
@@ -20,7 +20,7 @@ Page({
   //   }
   //   return {
   //     title: '小白店订单详情',
-  //     path: '/pages/user/dd',
+  //     path: '/pages/user/orderdetails',
   //     success: function (res) {
   //       // 转发成功
   //     },
@@ -37,7 +37,7 @@ Page({
     var orderid = options.orderid;
     var that = this;
     wx.request({
-      url: app.config.host + '/orders/' + orderid + '?token=' + util.gettoken(),
+      url: app.config.host + '/orders/' + orderid + '?token=' + util.gettoken() + '&entry' + app.globalData.entry,
       method: 'get',
       data: {},
       header: {
