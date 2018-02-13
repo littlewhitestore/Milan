@@ -189,7 +189,7 @@ Page({
   loadList: function (offset) {
     var that = this;
     wx.request({
-      url: app.config.host + '/home?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count + '&entry' + app.globalData.entry ,
+      url: app.config.host + '/home?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count + '&entry=' + app.globalData.entry ,
       method: 'get',
       data: {},
       header: {

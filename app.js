@@ -68,10 +68,11 @@ App({
         var code = res.code;
         console.log("code ="+code);
         wx.request({
-          url: that.config.host + '/login',
+          url: that.config.host + '/login' ,
           method: 'get',
           data: {
-            'code': code
+            'code': code,
+            'entry' : that.globalData.entry
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -177,6 +178,7 @@ App({
         'signature': res.signature,
         'encrypted_data': res.encryptedData,
         'iv': res.iv,
+        'entry': that.globalData.entry,
         'token': that.globalData.token
       },
       header: {

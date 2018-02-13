@@ -59,13 +59,14 @@ Page({
       mask: true
     })
     wx.request({
-      url: app.config.host + '/settlement' + '&entry' + app.globalData.entry,
+      url: app.config.host + '/settlement' ,
       method: 'post',
       data: {
         goods_id: that.data.goods_id,
         sku_id: that.data.sku_id,
         number: that.data.buy_number,        
         receiver: that.data.receiver,
+        entry: app.globalData.entry,
         token: app.globalData.token
       },
       header: {
@@ -120,14 +121,15 @@ Page({
       mask: true
     })
     wx.request({
-      url: app.config.host + '/order/buynow' + '&entry' + app.globalData.entry,
+      url: app.config.host + '/order/buynow' ,
       method: 'post',
       data: {
         goods_id: that.data.goods_id,
         sku_id: that.data.sku_id,
         number: that.data.buy_number,
         receiver: that.data.receiver,
-        token: app.globalData.token
+        token: app.globalData.token,
+        entry: app.globalData.entry
         // receiver: {
         //   province: "beijing",
         //   city: "beijing",
