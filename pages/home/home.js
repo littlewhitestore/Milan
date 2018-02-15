@@ -226,7 +226,10 @@ Page({
   loadList: function () {
     var that = this;
     wx.request({
+
       url: app.config.host + '/home?token=' + util.gettoken()  + "&count=" + that.data.count + '&entry=' + app.globalData.entry,
+
+
       method: 'get',
       data: {},
       header: {

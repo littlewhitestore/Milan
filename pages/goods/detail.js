@@ -339,7 +339,8 @@ Page({
       goods_id: option.goods_id,
     });
     Promisify.httpsPromisify(wx.request)({
-      url: app.config.host + '/goods/' + that.data.goods_id + '/detail' ,
+
+      url: app.config.host + '/goods/' + that.data.goods_id + '/detail',
       method: 'get',
       header: {
         entry: app.globalData.entry,
