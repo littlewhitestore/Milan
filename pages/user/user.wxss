@@ -5,37 +5,36 @@
 .userinfo{
   position: relative;
   width: 750rpx;
-  height: 320rpx;
-  background:#fe6e1f;
-  color: #fff;
+  height: 300rpx;
+  color:  rgba(0, 0, 0, 0.87);
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 .userinfo-avatar {
   display: block;
   width: 160rpx;
   height: 160rpx;
-  margin: 20rpx;
-  margin-top: 50rpx;
+  margin: 0 25rpx 0 60rpx;
   border-radius: 50%;
   border:2px solid #fff;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
 }
 
 .userinfo-nickname {
-  color: #fff;
-  font-size: 14px;
+  font-size: 28px;
 }
 
 
 .bigspace{
-    height: 40rpx;
-  background-color: #fafbfc; 
+  height: 15rpx;
+ background-color: #e9eaec;
+ margin-bottom: 20rpx;
 
 }
 .row{
-  padding:  0 14rpx;
+  padding: 30rpx  14rpx 20rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -50,8 +49,8 @@
  font-size:14px;
 }
 .space{
-  height: 10rpx;
-  background-color: #fafbfc; 
+  height: 1rpx;
+  background-color: #ccc; 
 
 }
 .row image{

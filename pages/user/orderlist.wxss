@@ -130,7 +130,7 @@ color: #43484c;
   height: 80rpx;
   line-height: 80rpx;
   margin-top: 80rpx;
-  background-color: #fe6e1f;
+  background-color: #f33975;
   border-radius: 5rpx;
   color: #fff;
   border: 0;

@@ -2,7 +2,7 @@
 <view class="page">
   <view class="userinfo">
     <image class="userinfo-avatar fl_l" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="fl_l">{{userInfo.nickName}}</text>
+    <text class=" userinfo-nickname fl_l">{{userInfo.nickName}}</text>
   </view>
   <!-- <view class="sc mt10 df">
     <view class="df_1 tc">
@@ -75,21 +75,18 @@
   <view class="bigspace"></view>
   <view class="row add" bindtap='add'>
     <view class="font">
-      <image src="../../images/icons/i-address.png"></image> 收货地址</view>
-    <view><image  src="../../images/icons/more-black.png"></image></view>
+      <image src="../../images/icons/i-address.png"></image>我的地址</view>
+    <view>
+      <image src="../../images/icons/more-black.png"></image>
+    </view>
   </view>
   <view class="space"></view>
 
-  <view class="row about" bindtap='about'>
-    <view class="font">
-      <image src="../../images/icons/about.png"></image> 关于小白店商城</view>
-<view><image  src="../../images/icons/more-black.png"></image></view>
-  </view>
-  <view class="space"></view>
+  
 
   <view class="row chat" bindtap='chat'>
     <view class="font">
-      <image src="../../images/icons/support.png"></image> 联系客服</view>
+      <image src="../../images/icons/support.png"></image>联系客服</view>
 
     <view class="gochat">
       <contact-button class='chater' size="27"></contact-button>

@@ -5,10 +5,10 @@ var app = getApp();
 var common = require("../../utils/common.js");
 var util = require("../../utils/util.js");
 var Promise = require('../../libs/es6-promise.min')
-var fail_count =0;
+var fail_count = 0;
 Page({
   data: {
-    show:-1,
+    show: -1,
     showLoading: true,
     winWidth: 0,
     winHeight: 0,
@@ -41,16 +41,16 @@ Page({
   // 生命周期 onLoad
   onLoad: function () {
     this.loadOrderList(0);
-  
+
 
   },
 
-  
-   loadOrderList: function (offset) {
+
+  loadOrderList: function (offset) {
     var that = this;
     console.log("请求订单url==" + app.config.host + '/orders?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count)
     wx.request({
-      url: app.config.host + '/orders?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count + '&entry' + app.globalData.entry,
+      url: app.config.host + '/orders?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count + '&entry=' + app.globalData.entry,
       method: 'get',
       data: {},
       header: {
@@ -58,30 +58,30 @@ Page({
       },
       success: function (res) {
 
-      if(res.data.data.length>0){
-         that.setData({
-           show:1
-         })
-      }else{
-        that.setData({
-          show: 0
-        })
-      }
-           
+        if (res.data.data.length > 0) {
+          that.setData({
+            show: 1
+          })
+        } else {
+          that.setData({
+            show: 0
+          })
+        }
+
         if (res.data.status_code && res.data.status_code == 1) {
-          if (offset == 0){
+          if (offset == 0) {
             that.setData({
               orderList: res.data.data,
             });
           } else if (offset > 0) {
-         that.data.orderList = that.data.orderList.concat(res.data.data);
-            
-            that.setData({ 
+            that.data.orderList = that.data.orderList.concat(res.data.data);
+
+            that.setData({
               orderList: that.data.orderList,
-             });
+            });
           }
 
-           
+
         } else if (res.data.status_code == 0) {
           wx.showToast({
             title: res.data.message,
@@ -94,41 +94,42 @@ Page({
               app.confirmUserLogin(resolve, reject);
               console.log("=========11测试resolve========");
               console.log(resolve);
-              console.log(reject); 
+              console.log(reject);
             });
             return p;
           }
-      
-          
+
+
           //执行异步方法
           runAsyncLogin()
-          .then(function (results) {//异步方法
-            console.log(results); 
-            console.log(util.gettoken());
-            
-            
-            fail_count+=1;
-            if(fail_count < 5) {
-              that.loadOrderList(0);
-            }
-            
-          })
-          .catch(function (reason) {
-              console.log(reason); 
-          })  
+            .then(function (results) {//异步方法
+              console.log(results);
+              console.log(util.gettoken());
+
+
+              fail_count += 1;
+              if (fail_count < 5) {
+                that.loadOrderList(0);
+              } 
+
+            })
+            .catch(function (reason) {
+              console.log(reason);
+            })
         }
-  
+
         console.log(that.data.orderList);
       },
       fail: function (e) {
         that.setData({
-          show:0
+          show: 0
         })
         wx.showToast({
           title: '网络异常！',
           duration: 2000
         });
-  
+        
+
       },
 
       complete: function () {
@@ -138,7 +139,7 @@ Page({
           wx.stopPullDownRefresh()
         }
         wx.hideNavigationBarLoading() //完成停止加载
-       
+
         that.setData({
           showLoading: false
         })
@@ -150,26 +151,26 @@ Page({
     wx.showNavigationBarLoading(); //在标题栏中显示加载
     this.loadOrderList(0);
   },
-  onReachBottom: function(){
+  onReachBottom: function () {
     this.loadOrderList(this.data.orderList.length);
   },
 
-gohome:function(){
-  wx.reLaunch({
-    url: '../home/home',
-    success: function (res) {
-      console.log(res)
-    },
-    fail: function () {
-      // fail
-    },
-    complete: function () {
-      // complete
-    }
-  })
-},
- 
-  
+  gohome: function () {
+    wx.reLaunch({
+      url: '../home/home',
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+
+
 
   // onLoad: function (options) {
   //   this.initSystemInfo();
@@ -389,22 +390,22 @@ gohome:function(){
   //     }
   //   });
   // },
-onShareAppMessage: function (res) {
-  if (res.from === 'button') {
-    // 来自页面内转发按钮
-    console.log(res.target)
-  }
-  return {
-    title: '小白店订单',
-    path: '/pages/user/dingdan',
-    success: function (res) {
-      // 转发成功
-    },
-    fail: function (res) {
-      // 转发失败
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
     }
-  }
-},
+    return {
+      title: '小白店订单',
+      path: '/pages/user/dingdan',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
   bindChange: function (e) {
     var that = this;
     that.setData({ currentTab: e.detail.current });

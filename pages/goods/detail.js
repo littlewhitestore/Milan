@@ -339,10 +339,11 @@ Page({
       goods_id: option.goods_id,
     });
     Promisify.httpsPromisify(wx.request)({
-      url: app.config.host + '/goods/' + that.data.goods_id + '/detail' + '&entry' + app.globalData.entry,
+      url: app.config.host + '/goods/' + that.data.goods_id + '/detail' ,
       method: 'get',
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        entry: app.globalData.entry,
+        token: app.globalData.token,
       },
     }).then(function (res) {
 

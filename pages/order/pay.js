@@ -59,14 +59,15 @@ Page({
       mask: true
     })
     wx.request({
-      url: app.config.host + '/settlement' + '&entry' + app.globalData.entry,
+      url: app.config.host + '/settlement/buynow',
       method: 'post',
       data: {
         goods_id: that.data.goods_id,
         sku_id: that.data.sku_id,
         number: that.data.buy_number,        
         receiver: that.data.receiver,
-        token: app.globalData.token
+        token: app.globalData.token,
+         entry: app.globalData.entry,
       },
       header: {
         'Content-Type': 'application/json'
