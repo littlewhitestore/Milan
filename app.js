@@ -72,7 +72,9 @@ App({
           method: 'get',
           data: {
             'code': code,
-            'entry' : that.globalData.entry
+
+            'entry': that.globalData.entry,
+
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -81,6 +83,7 @@ App({
             console.log("=========login ======"); 
             console.log(res);           
             if(res.data.status_code == 1){
+
               that.globalData.token = res.data.data.token;
               that.header.token_id = res.data.data.token;
               wx.setStorageSync('token', res.data.data.token);
@@ -129,7 +132,7 @@ App({
                         success: (res) => {
                           if (res.authSetting["scope.userInfo"])
                             wx.getUserInfo({
-                              success: function (res) {
+                            success: function (res) {
                                 that.globalData.userInfo = res.userInfo;
                                 console.info("用户信息-》", res);
                                 that.uploadUserInfo(resolve, reject,res);
@@ -178,8 +181,9 @@ App({
         'signature': res.signature,
         'encrypted_data': res.encryptedData,
         'iv': res.iv,
-        'entry': that.globalData.entry,
-        'token': that.globalData.token
+        'token': that.globalData.token,
+        'entry': that.globalData.entry
+
       },
       header: {
         'Content-Type': 'application/json'
@@ -201,6 +205,7 @@ App({
 
   
 });
+
 
 
 

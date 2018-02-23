@@ -69,7 +69,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  font-size: 13px;
+  font-size: 12px;
   border-bottom: solid 20rpx #fafbfc;
   border-top: solid 20rpx #fafbfc;
 }
@@ -550,13 +550,15 @@ swiper-container {
   margin: 0 6rpx;
   width: 20rpx;
   height: 20rpx;
-  background: #dfdfdf;
+  background-color:  #979fa7;
+
   border-radius: 50%;
   transition: all 0.6s;
 }
 
 .swiper-container .dots .dot.active {
-  background: #d0021b;
+  background-color:#f33975;
+
 }
 
 .pos {
@@ -574,17 +576,19 @@ swiper-container {
 
 .price {
   font-size: 16px;
-  color: #fe6e1f;
+	color: rgba(243, 57, 117, 0.87);
+
   margin-left: 20rpx;
 }
 
 .oldprice {
-  font-size: 16px;
-  color: #979fa7;
-  margin: 0 50rpx;
+  font-size: 14px;
+	color: #979fa7;
+  margin: 4rpx 100rpx;
 }
 .bg_btn{
-   background-color: #fe6e1f;
+   background-color:#f33975;
+
 }
 
 .postage {

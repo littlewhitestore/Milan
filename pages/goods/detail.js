@@ -346,7 +346,8 @@ Page({
       },
 
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        entry: app.globalData.entry,
+        token: app.globalData.token,
       },
     }).then(function (res) {
 

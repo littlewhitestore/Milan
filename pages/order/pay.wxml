@@ -1,8 +1,5 @@
 <!--pay.wxml-->
 <view class="w100">
-
-
-
     <view class='basetop'> </view>
     <view class="info"  bindtap="getWxAddress" wx:if="{{receiver != null}}">
       <view class="in_left">
@@ -16,7 +13,7 @@
         </view>
         <view class='address'>收货地址: {{receiver.province}} {{receiver.city}} {{receiver.district}} {{receiver.address}}</view>
       </view>
-     <image class="arrow arrow_selected" src="/images/icons/more-black.png"></image>
+     <image class="arrow arrow_selected" src="/images/icons/more-black.png"></image> 
 
     </view>
  
@@ -78,7 +75,7 @@
   <view class="bg_grey_fafbfc mt15 font_14 payitem">
     <image class='ic_wx ml20 mr28' src="/images/icons/i-wechat.png"></image>
     <text class='df_1 font_14 font_444'>微信支付</text>
-    <image class='ic_selected mr28' src="/images/icons/ic_selected.png"></image>
+    <image class='ic_selected mr28' src="/images/icons/rond.png"></image>
   </view>
 
   <view class="mt20 ml20 font_12 color_757f8a">

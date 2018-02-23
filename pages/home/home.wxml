@@ -1,8 +1,6 @@
 <!-- index.wxml -->
 <view class="page">
 
-
-
   <view class="swiper-container">
     <swiper autoplay="auto" circular="true" interval="5000" duration="500" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
       <block wx:for="{{slider}}" wx:key="unique">
@@ -15,35 +13,104 @@
 
     <view wx:if="{{slider.length>1}}" class="dots">
       <block wx:for="{{slider}}" wx:key="unique">
-        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}">
+        </view>
       </block>
 
 
     </view>
+  </view>
 
-    <view class="space">
-      <view class="line"></view>
-      <view class="font">好物精选</view>
-      <view class="line"></view>
-    </view>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">为你推荐</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">最新商品</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">热卖商品</view>
+  </view>
 
-    <view class='con'>
-      <view class='pro' wx:for="{{productData}}" data-id="{{item.goods_id}}" bindtap='godetail'>
-        <view class='pro_img'>
-          <image src="{{item.goods_img}}"></image>
-        </view>
-        <view class='pro_title'>{{item.goods_name}}</view>
-        <view class='pro_price'>
-          <view class="nowprice theme_color">￥{{item.goods_price}}</view>
-          <view class="oldprice">￥{{item.market_price}} </view>
+  <swiper current="{{currentTab}}" class="swiper-box" duration="200" bindchange="bindChange">
+
+    <swiper-item>
+      <view class='con'>
+        <view class='pro' wx:for="{{productData}}" data-id="{{item.goods_id}}" bindtap='godetail'>
+          <view class='pro_img'>
+            <image src="{{item.goods_img}}"></image>
+          </view>
+          <view class='pro_title'>{{item.goods_name}}</view>
+          <view class='pro_price'>
+            <view class="nowprice theme_color">￥{{item.goods_price}}</view>
+            <view class="oldprice">￥{{item.market_price}} </view>
+          </view>
         </view>
       </view>
-    </view>
-    <image class='gotop' bindtap='gotop' wx:if="{{floorstatus}}" src="../../images/icons/back-to-top.png"></image>
+            <view class='con'>
+        <view class='pro' wx:for="{{productData}}" data-id="{{item.goods_id}}" bindtap='godetail'>
+          <view class='pro_img'>
+            <image src="{{item.goods_img}}"></image>
+          </view>
+          <view class='pro_title'>{{item.goods_name}}</view>
+          <view class='pro_price'>
+            <view class="nowprice theme_color">￥{{item.goods_price}}</view>
+            <view class="oldprice">￥{{item.market_price}} </view>
+          </view>
+        </view>
+      </view>
+            <view class='con'>
+        <view class='pro' wx:for="{{productData}}" data-id="{{item.goods_id}}" bindtap='godetail'>
+          <view class='pro_img'>
+            <image src="{{item.goods_img}}"></image>
+          </view>
+          <view class='pro_title'>{{item.goods_name}}</view>
+          <view class='pro_price'>
+            <view class="nowprice theme_color">￥{{item.goods_price}}</view>
+            <view class="oldprice">￥{{item.market_price}} </view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
 
-  </view>
-  </view>
-  <!-- <view class="content">
+    <swiper-item>
+      <view class='con'>
+        <view class='pro' wx:for="{{productData}}" data-id="{{item.goods_id}}" bindtap='godetail'>
+          <view class='pro_img'>
+            <image src="{{item.goods_img}}"></image>
+          </view>
+          <view class='pro_title'>{{item.goods_name}}</view>
+          <view class='pro_price'>
+            <view class="nowprice theme_color">￥{{item.goods_price}}</view>
+            <view class="oldprice">￥{{item.market_price}} </view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+      <view class='con'>
+        <view class='pro' wx:for="{{productData}}" data-id="{{item.goods_id}}" bindtap='godetail'>
+          <view class='pro_img'>
+            <image src="{{item.goods_img}}"></image>
+          </view>
+          <view class='pro_title'>{{item.goods_name}}</view>
+          <view class='pro_price'>
+            <view class="nowprice theme_color">￥{{item.goods_price}}</view>
+            <view class="oldprice">￥{{item.market_price}} </view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+
+
+
+
+
+
+
+  <image class='gotop' bindtap='gotop' wx:if="{{floorstatus}}" src="../../images/icons/back-to-top.png"></image>
+
+</view>
+
+<!-- <view class="content">
 
 
     <view wx:for="{{productData}}">
@@ -77,7 +144,7 @@
 
 
 
-  <!-- <view class="cont">
+<!-- <view class="cont">
     <navigator class="pr" url="../goods/detail?goodsId={{item.id}}" hover-class="changestyle" wx:for="{{productData}}">
       <image class="photo" src="{{item.photo_x}}"></image>
       <view class="title">{{item.name}}</view>

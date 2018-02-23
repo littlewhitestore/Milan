@@ -31,10 +31,10 @@
   <view class="num">
     <image class="listimg" src='../../images/icons/goods-list.png'></image>
     <text class='z'> 商品清单</text>
-    <view>
+    <!-- <view>
       <contact-button class="chatimg_btn" size="27"></contact-button>
       <image class="chatimg_image" src='../../images/icons/order-chat.png'></image>
-    </view>
+    </view> -->
 
   </view>
   <view class="line">

@@ -22,8 +22,36 @@ Page({
     kbs: [],
     lastcat: [],
     course: [],
-   floorstatus: false
-   
+    floorstatus: false,
+    winWidth: 0,
+    winHeight: 0,
+    // tab切换  
+    currentTab: 0,
+
+  },
+  /** 
+   * 滑动切换tab 
+   */
+  bindChange: function (e) {
+
+    var that = this;
+    that.setData({ currentTab: e.detail.current });
+
+  },
+  /** 
+   * 点击tab切换 
+   */
+  swichNav: function (e) {
+
+    var that = this;
+
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
   },
   gotop: function () {
     wx.pageScrollTo({
@@ -168,58 +196,63 @@ Page({
 
 
   onLoad: function () {
-    this.loadList(0)
-  
-  
+    this.loadList()
+    var that = this;
+    wx.getSystemInfo({
+
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+
+    });
   },
 
-  floorstatus:function(){
-    var that=this;
-    var prolength= that.data.productData.length;
+  floorstatus: function () {
+    var that = this;
+    var prolength = that.data.productData.length;
     var count = that.data.count;
     var page = prolength / count;
-    if(page>1){
+    if (page > 1) {
       that.setData({
         floorstatus: true,
       })
     }
-   
+
   },
 
-  loadList: function (offset) {
+  loadList: function () {
     var that = this;
     wx.request({
-      url: app.config.host + '/home?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count + '&entry=' + app.globalData.entry ,
+
+      url: app.config.host + '/home?token=' + util.gettoken()  + "&count=" + that.data.count + '&entry=' + app.globalData.entry,
+
+
       method: 'get',
       data: {},
       header: {
-   
+
         'Content-Type': 'application/json'
       },
       success: function (res) {
         console.log(res.data.status_code);
         if (res.data.status_code && res.data.status_code == 1) {
-          if (offset == 0) {
-            console.log("=====首页数据请求成功=======");
-            console.log(res);
-            var bannerimg = res.data.data.banner_img_list;
-            var productlist = res.data.data.goods_list;
+
+          console.log("=====首页数据请求成功=======");
+          console.log(res);
+          var bannerimg = res.data.data.banner_img_list;
+          var productlist = res.data.data.goods_list;
 
 
-            that.setData({
-              slider: bannerimg,
-              productData: productlist
+          that.setData({
+            slider: bannerimg,
+            productData: productlist
 
-            });
+          });
 
 
-          } else if (offset > 0) {
-            that.data.productData = that.data.productData.concat(res.data.data.goods_list);
-
-            that.setData({
-              productData: that.data.productData
-            });
-          }
 
 
         } else if (res.data.status_code == 0) {
@@ -228,7 +261,7 @@ Page({
           })
         }
 
- 
+
 
         var prolength = that.data.productData.length;
         var count = that.data.count;
@@ -248,11 +281,7 @@ Page({
       },
 
       complete: function () {
-        if (offset == 0) {
-          wx.stopPullDownRefresh()
-        } else if (offset > 0) {
-          wx.stopPullDownRefresh()
-        }
+        wx.stopPullDownRefresh()
         wx.hideNavigationBarLoading() //完成停止加载
 
       }
@@ -261,11 +290,11 @@ Page({
 
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading(); //在标题栏中显示加载
-    this.loadList(0);
+    this.loadList();
   },
-  onReachBottom: function () {
-    this.loadList(this.data.productData.length);
-  },
+  // onReachBottom: function () {
+  //   this.loadList(this.data.productData.length);
+  // },
 
 
 

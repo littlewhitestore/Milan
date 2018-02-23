@@ -59,15 +59,16 @@ Page({
       mask: true
     })
     wx.request({
-      url: app.config.host + '/settlement' ,
+      url: app.config.host + '/settlement/buynow',
       method: 'post',
       data: {
         goods_id: that.data.goods_id,
         sku_id: that.data.sku_id,
         number: that.data.buy_number,        
         receiver: that.data.receiver,
-        entry: app.globalData.entry,
-        token: app.globalData.token
+        token: app.globalData.token,
+         entry: app.globalData.entry,
+
       },
       header: {
         'Content-Type': 'application/json'
@@ -121,7 +122,7 @@ Page({
       mask: true
     })
     wx.request({
-      url: app.config.host + '/order/buynow' ,
+      url: app.config.host + '/order/create/buynow' ,
       method: 'post',
       data: {
         goods_id: that.data.goods_id,

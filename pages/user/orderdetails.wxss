@@ -201,7 +201,7 @@ justify-content: space-around;
 }
 
 .pri {
-  color: #fe6e1f;
+  color: rgba(243, 57, 117, 0.87);
   font-size: 13px;
 }
 
