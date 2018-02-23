@@ -1,24 +1,38 @@
-.swiper-tab{  
-    width: 100%;  
-  border-bottom: 1rpx solid rgba(151, 159, 167, 0.5);
-    text-align: center;  
-    line-height: 80rpx;}  
-.swiper-tab-list{  font-size: 14px;  
-    display: inline-block;  
-    width: 33.33%;  
-   color: #48434c
-}  
-.on{  color: #f33975;
-    border-bottom: 5rpx solid#f33975;
+.swiper-tab {
+  width: 100%;
+  /* border-bottom: 1rpx solid rgba(151, 159, 167, 0.5); */
+  text-align: center;
+  height:100rpx;
+  line-height: 100rpx;
+  background-color:  #fafbfc;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-around;
+}
 
-    
-    }  
+
+.swiper-tab-list {
+  font-size: 14px;
   
-.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; }  
-.swiper-box view{  
+  color: #48434c;
+}
 
-    margin-top: 10rpx;
-}  
+.on {
+  color: #f33975;
+  /* border-bottom: 5rpx solid#f33975; */
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box view {
+  margin-top: 10rpx;
+}
+
 .list {
   display: flex;
   flex-direction: column;
@@ -35,11 +49,11 @@
 }
 
 .no {
-  color:#43484c;
+  color: #43484c;
 }
 
 .status {
-  color:#43484c;
+  color: #43484c;
 }
 
 .line {
