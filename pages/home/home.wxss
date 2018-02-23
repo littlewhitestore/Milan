@@ -1,30 +1,40 @@
 /**index.wxss**/
-.swiper-tab{  
-    width: 100%;  
-    border-bottom: 1rpx solid rgba(151, 159, 167, 0.5);
-    text-align: center;  
-    line-height: 80rpx;
-    }  
-.swiper-tab-list{  
-  font-size: 14px;  
-    display: inline-block;  
-    width: 33.33%;  
-    color: #48434c
-}  
-.on{ 
+
+.swiper-tab {
+  width: 100%;
+  border-bottom: 1rpx solid rgba(151, 159, 167, 0.5);
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.swiper-tab-list {
+  font-size: 14px;
+  display: inline-block;
+  width: 33.33%;
+  color: #48434c;
+}
+
+
+.on {
   color: #f33975;
-    border-bottom: 5rpx solid#f33975}  
-  
-.swiper-box{ display: block; min-height:300rpx;width:750rpx;}  
-.swiper-box view{ 
+  border-bottom: 5rpx solid #f33975;
+}
+
+.swiper-box {
+  display: block;
+  min-height: 300rpx;
+  width: 750rpx;
+}
+
+.swiper-box view {
   overflow: scroll;
-  text-align: center;  
-}  
+  text-align: center;
+}
+
 .page {
   height: 100%;
   font-family: '微软雅黑';
   background-color: #fff;
-  
 }
 
 swiper-container {
@@ -43,7 +53,7 @@ swiper-container {
 .swiper-container .dots {
   width: 200rpx;
   height: 40rpx;
-  position:absolute;
+  position: absolute;
   top: 336rpx;
   left: 275rpx;
   display: flex;
@@ -64,8 +74,8 @@ swiper-container {
 }
 
 .space {
- padding-top:30rpx;
- padding-bottom: 15rpx;
+  padding-top: 30rpx;
+  padding-bottom: 15rpx;
   height: 50rpx;
   line-height: 50rpx;
   display: flex;
@@ -91,19 +101,18 @@ swiper-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 
 .left {
   width: 200rpx;
 }
 
-.left image{
+.left image {
   width: 200rpx;
   height: 200rpx;
 }
-       
- .right {
+
+.right {
   padding-left: 10rpx;
   width: 500rpx;
   margin-right: 10rpx;
@@ -111,38 +120,39 @@ swiper-container {
   flex-direction: column;
   justify-content: space-between;
 }
-.right .title{
+
+.right .title {
   padding-top: 10rpx;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size:14px;
+  font-size: 14px;
   color: rgba(67, 72, 76, 1);
   margin-bottom: 30rpx;
 }
-.right .price{
- 
+
+.right .price {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items:flex-end;
-  
+  align-items: flex-end;
 }
-.price .money .now{
+
+.price .money .now {
   color: #fe6e1f;
-  font-size:17px;
-  
+  font-size: 17px;
 }
-.price .money .old{
-  color:rgba(67, 72, 76, 0.87);
-  font-size:14px;
-  text-decoration:line-through;
+
+.price .money .old {
+  color: rgba(67, 72, 76, 0.87);
+  font-size: 14px;
+  text-decoration: line-through;
   margin-left: 4rpx;
 }
 
-.price .buy{
- width: 200rpx;
+.price .buy {
+  width: 200rpx;
   height: 70rpx;
   line-height: 70rpx;
   border-radius: 4px;
@@ -150,32 +160,31 @@ swiper-container {
   color: rgba(255, 255, 255, 0.87);
   text-align: center;
   font-size: 16px;
-  padding:0 0 3rpx 12rpx;
-
+  padding: 0 0 3rpx 12rpx;
 }
-.base{
+
+.base {
   width: 100%;
-  border-bottom:1rpx solid  #d4d4d4;
-  margin:20rpx 0 ;
+  border-bottom: 1rpx solid #d4d4d4;
+  margin: 20rpx 0;
 }
 
-
-.gotop{
+.gotop {
   position: fixed;
   bottom: 10rpx;
   right: 14rpx;
   width: 100rpx;
   height: 100rpx;
- 
 }
-.moreimg{
-  width:46rpx; 
-  height:46rpx;
+
+.moreimg {
+  width: 46rpx;
+  height: 46rpx;
   vertical-align: middle;
   margin-top: -4rpx;
   margin-right: -6rpx;
-  
 }
+
 .nav {
   background: #fff;
   padding: 15px 0;
@@ -612,52 +621,55 @@ icon {
   display: flex;
   opacity: 0;
 }
-.content{
+
+.content {
   padding: 10rpx 30rpx;
 }
 
-.con{
+.con {
   padding: 15rpx 0;
-  display:flex;
+  display: flex;
   flex-direction: row;
-  flex-wrap: wrap; 
-
- 
+  flex-wrap: wrap;
 }
-.pro{
+
+.pro {
   display: flex;
   flex-direction: column;
   margin-left: 15rpx;
   margin-bottom: 15rpx;
 }
-.pro_img image{
+
+.pro_img image {
   height: 352rpx;
   width: 352rpx;
-
 }
-.pro_title{
+
+.pro_title {
   max-width: 352rpx;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size:14px;
+  font-size: 14px;
   color: #000;
 }
-.pro_price{
-   max-width: 352rpx;
+
+.pro_price {
+  max-width: 352rpx;
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
 }
-.pro_price .oldprice{
-  color:#757f8a;
-  font-size:14px;
-  text-decoration:line-through;
-}
-.pro_price .nowprice{
- font-size:17px;
-  color: #f33975;
+
+.pro_price .oldprice {
+  color: #757f8a;
+  font-size: 14px;
+  text-decoration: line-through;
 }
 
+.pro_price .nowprice {
+  font-size: 17px;
+  color: #f33975;
+}

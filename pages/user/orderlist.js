@@ -26,6 +26,30 @@ Page({
     count: 3,
 
   },
+  /** 
+   * 滑动切换tab 
+   */
+  bindChange: function (e) {
+
+    var that = this;
+    that.setData({ currentTab: e.detail.current });
+
+  },
+  /** 
+   * 点击tab切换 
+   */
+  swichNav: function (e) {
+
+    var that = this;
+
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+  } ,
 
 
   dddetail: function (event) {
@@ -41,16 +65,30 @@ Page({
   // 生命周期 onLoad
   onLoad: function () {
     this.loadOrderList(0);
+    var that = this;
 
+    /** 
+     * 获取系统信息 
+     */
+    wx.getSystemInfo({
+
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+
+    });  
 
   },
 
 
   loadOrderList: function (offset) {
     var that = this;
-    console.log("请求订单url==" + app.config.host + '/orders?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count)
+    console.log("请求订单url==" + app.config.host + '/order/all?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count)
     wx.request({
-      url: app.config.host + '/orders?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count + '&entry=' + app.globalData.entry,
+      url: app.config.host + '/order/all?token=' + util.gettoken() + "&offset=" + offset + "&count=" + that.data.count + '&entry=' + app.globalData.entry,
       method: 'get',
       data: {},
       header: {
@@ -151,9 +189,9 @@ Page({
     wx.showNavigationBarLoading(); //在标题栏中显示加载
     this.loadOrderList(0);
   },
-  onReachBottom: function () {
-    this.loadOrderList(this.data.orderList.length);
-  },
+  // onReachBottom: function () {
+  //   this.loadOrderList(this.data.orderList.length);
+  // },
 
   gohome: function () {
     wx.reLaunch({
@@ -406,42 +444,42 @@ Page({
       }
     }
   },
-  bindChange: function (e) {
-    var that = this;
-    that.setData({ currentTab: e.detail.current });
-  },
-  swichNav: function (e) {
-    var that = this;
-    if (that.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      var current = e.target.dataset.current;
-      that.setData({
-        currentTab: parseInt(current),
-        isStatus: e.target.dataset.otype,
-      });
+  // bindChange: function (e) {
+  //   var that = this;
+  //   that.setData({ currentTab: e.detail.current });
+  // },
+  // swichNav: function (e) {
+  //   var that = this;
+  //   if (that.data.currentTab === e.target.dataset.current) {
+  //     return false;
+  //   } else {
+  //     var current = e.target.dataset.current;
+  //     that.setData({
+  //       currentTab: parseInt(current),
+  //       isStatus: e.target.dataset.otype,
+  //     });
 
-      //没有数据就进行加载
-      switch (that.data.currentTab) {
-        case 0:
-          !that.data.orderList0.length && that.loadOrderList();
-          break;
-        case 1:
-          !that.data.orderList1.length && that.loadOrderList();
-          break;
-        case 2:
-          !that.data.orderList2.length && that.loadOrderList();
-          break;
-        case 3:
-          !that.data.orderList3.length && that.loadOrderList();
-          break;
-        case 4:
-          that.data.orderList4.length = 0;
-          that.loadReturnOrderList();
-          break;
-      }
-    };
-  },
+  //     //没有数据就进行加载
+  //     switch (that.data.currentTab) {
+  //       case 0:
+  //         !that.data.orderList0.length && that.loadOrderList();
+  //         break;
+  //       case 1:
+  //         !that.data.orderList1.length && that.loadOrderList();
+  //         break;
+  //       case 2:
+  //         !that.data.orderList2.length && that.loadOrderList();
+  //         break;
+  //       case 3:
+  //         !that.data.orderList3.length && that.loadOrderList();
+  //         break;
+  //       case 4:
+  //         that.data.orderList4.length = 0;
+  //         that.loadReturnOrderList();
+  //         break;
+  //     }
+  //   };
+  // },
   /**
    * 微信支付订单
    */
