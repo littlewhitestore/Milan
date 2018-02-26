@@ -342,16 +342,17 @@ Page({
       url: app.config.host + '/goods/' + that.data.goods_id + '/detail' ,
       method: 'get',
       data: {
-        entry: app.globalData.entry
+        entry: app.globalData.entry,
+        token: app.globalData.token,
       },
 
       header: {
         entry: app.globalData.entry,
-        token: app.globalData.token,
+        
       },
     }).then(function (res) {
 
-      
+      console.log(res)
       if (res.data.status_code && res.data.status_code == 1) {
 
         var mock_sku_list = [
@@ -481,6 +482,7 @@ Page({
     } else if (that.data.goods_info.property_vector.length == 1 ){
       
       for (var i = 0; i < that.data.goods_info.sku_list.length; i ++){
+        let sku = that.data.goods_info.sku_list[i]
         if (sku.stock == 0){
           that.data.arr1[i].btn_class = "disable_select"
         }
@@ -611,6 +613,7 @@ Page({
       } else if (that.data.goods_info.property_vector.length == 1) {
 
         for (var i = 0; i < that.data.goods_info.sku_list.length; i++) {
+          let sku = that.data.goods_info.sku_list[i]
           if (sku.stock == 0) {
             that.data.arr1[i].btn_class = "disable_select"
           }
